@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Add New Pet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+</head>
+
+<style>
+
+	#select option{
+ 		width:1000px;   
+	}
+	
+	
+	select {
+  
+		  appearance: none;
+		  background-color: transparent;
+		  border: 1.5px solid #ddd;
+		  height:40px;
+		  padding: 0 1em 0 0;
+		  margin: 0;
+		  width: 100%;
+		  font-family: inherit;
+		  font-size: 15px;
+		  cursor: inherit;
+		  line-height: inherit;  
+		  z-index: 1;
+		  outline: none;
+	}
+	
+	.topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: blue;
+      color: white;
+    }
+	
+</style>
+
+<body>
+
+ <div class="topnav">
+      <a class="active" href="/">Home</a>
+
+    </div>
+    
+<div align="center">
+
+    <br />
+     <div class="col-sm-4">
+    <form action="#" th:action="@{/save}" th:object="${details}" method="post">
+ 
+      
+<div alight="left">
+            <tr>
+                <label class="form-label" >Pet Name</label>
+                <td>
+                <input type="hidden" th:field="*{id}" />
+                <input type="text" th:field="*{petname}" class="form-control" placeholder="Pet Name" required/>
+                </td>
+            </tr>
+         </div>  
+            
+            <br>
+           <div alight="left">
+          
+            <tr>
+                 <label class="form-label" >Pet Type</label>
+                 	<!-- <td><input type="text" th:field="*{pettype}" class="form-control" placeholder="Pet Type (Ex: Dog, Cat, Cow etc)" /></td>  -->
+                <br>
+                
+				<div class="select">
+				  <select th:field="*{pettype}" id="standard-select">
+					    <option value="Dog">Dog</option>
+					    <option value="Cow">Cow</option>
+					    <option value="Cat">Cat</option>
+					    <option value="Horse">Horse</option>
+				  </select>
+				  <span class="focus"></span>
+				</div>
+            </tr>
+            </div>
+<br>
+            <tr>
+            <td colspan="2"><button type="submit" class="btn btn-info">Save</button> </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+
+  <style>
+    @media (min-width: 1200px) {
+
+      .container,
+      .container-sm,
+      .container-md,
+      .container-lg,
+      .container-xl {
+        max-width: 100%;
+      }
+    }
+
+    .container {
+
+      margin: 1rem;
+      padding: 2rem 2rem;
+      text-align: center;
+      margin-left:40px;
+    }
+
+    .container1 {
+      
+      display: inline-block;
+      padding: 1rem 1rem;
+      vertical-align: middle;
+
+    }
+
+
+    .container1 h2 {
+
+      /* margin-top:100px; */
+      font-size: 30px;
+    }
+
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    .topnav a {
+      float: left;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+
+    .topnav a.active {
+      background-color: blue;
+      color: white;
+    }
+
+    .topnav a.appointment {
+      margin-left: 1000px;
+    }
+    
+	.flex-parent-element {
+	  display: flex;
+	  width: 50%;
+	  margin-top:100px;
+	}
+
+	.flex-child-element {
+	  	flex: 1;
+	 	margin-left:150px;
+	  	/* margin: 10px; */
+	}
+	
+	.flex-child-element:first-child {
+	  margin-top: 20px;
+	  margin-right: 10px;
+	}
+
+  </style>
+
+  <body>
+
+    <div class="topnav">
+      <a class="active" href="#">Home</a>
+      
+      <a class="appointment" href="showAppointment1">Show Appointments</a>
+
+      <a class="showAppointment" href="bookAppointment">Book Appointment</a>
+
+      <a class="addPet" href="new">Add Pet</a>
+
+      <a th:href="@{/logout}" class="logout" href="login">Log Out</a>
+
+    </div>
+
+    <div class="flex-parent-element">
+
+      <div class="flex-child-element magenta">
+        <h2>Pet Details</h2>
+
+        <tr>
+          <div class="col-sm-5" align="center">
+            <div class="panel-body" align="center">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Pet Id</th>
+                    <th style="padding-left:80px">Pet Name</th>
+                    <th style="padding-left:80px">Pet Type</th>
+                    <th style="padding-left:80px">Edit</th>
+                    <th style="padding-left:80px">Delete</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="details : ${petDetails }">
+                    <td th:text="${details.id}">Pet ID</td>
+                    <td style="padding-left:80px" th:text="${details.petname}">Pet Name</td>
+                    <td style="padding-left:80px" th:text="${details.pettype}">Pet Type</td>
+
+                    <td>
+                      <a style="padding-left:70px" th:href="@{'/edit/' + ${details.id}}">Edit</a>
+                    </td>
+                    <td>
+                      <a style="padding-left:70px" th:href="@{'/delete/' + ${details.id}}">Delete</a>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+
+        </tr>
+
+        </tbody>
+        </table>
+      </div>
+
+      <div class="flex-child-element green">
+        <br>
+        <h2>Vet Details</h2>
+
+        <tr>
+          <div class="col-sm-5" align="center">
+            <div class="panel-body" align="center">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Vet Id</th>
+                    <th style="padding-left:60px">Vet Name</th>
+                    <th style="padding-left:60px">Qualification</th>
+                    <th style="padding-left:40px">Experience (in yrs)</th>
+                    <th></th> 
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="details : ${vetDetails }">
+                    <td th:text="${details.id}">Vet ID</td>
+                    <td style="padding-left:60px" th:text="${details.vetname}">Vet Name</td>
+                    <td style="padding-left:60px" th:text="${details.qualification}">Qualification</td>
+                    <td style="padding-left:60px" th:text="${details.experience}">Experience</td>
+
+                    <td>
+                      <!-- <a style="padding-left:50px" th:href="@{'/#/'}">Book</a> -->
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </div>
+
+          </div>
+
+        </tr>
+
+        </tbody>
+        </table>
+      </div>
+
+    </div>
+  </body>
+
+</html>
